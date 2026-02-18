@@ -1,7 +1,7 @@
 #  LRTool
 
 <p align="center">
-LRTool is simple utility designed to calculate stable, high-quality learning rates for LoRA training workflows.
+LRTool is a simple tool designed to calculate stable, high-quality learning rates for LoRA training workflows. 
 </p>
 
 ---
@@ -20,11 +20,15 @@ LRTool is simple utility designed to calculate stable, high-quality learning rat
 -   ✅ Z-Image
 
 **Features**:
--   ✅ Empirical sweet-spot modeling
--   ✅ Mathematical exposure modeling
--   ✅ Model-aware resolution scaling
--   ✅ Optimizer-aware adjustment
--   ✅ Dual scoring diagnostics
+
+-   ✅ Analytical, energy-based LR modeling
+-   ✅ Full step scaling (√steps)
+-   ✅ Full rank scaling (√r/α)
+-   ✅ Full resolution scaling (√resolution)
+-   ✅ Optimizer-aware adjustments
+-   ✅ Objective-based adjustments
+-   ✅ Dataset size-aware
+-   ✅ Manual Energy constant offset
 
 The goal: eliminate LR guesswork and prevent:
 
@@ -35,49 +39,7 @@ The goal: eliminate LR guesswork and prevent:
 -   🔴 Instability
 
 
-
 ##  🚀 Requirements
 
 -  Python 3.9+
 -  Windows executable provided (No python required)
-
-
-##  🏗 Application Modes
-
-### **Standard Mode (Default)** - Empirically centered.
-
-Learning rate is determined by:
-
--   Base Model
--   Training Objective
--   Scheduler
--   Resolution
--   Training length regime  
-
-
-
-### **Advanced Mode** - Full mathematical modeling.
-
-Advanced Mode models:
-
--   Exposure scaling
--   Rank/Alpha scaling
--   Optimizer behavior
--   Warmup steps
--   Resolution
--   Training length regimes  
-
-
-
-### **Standard vs Advanced**
-
-| Feature                | Standard | Advanced              |
-| ---------------------- | -------- | --------------------- |
-| Empirically centered   | ✅        | ❌                     |
-| Model-aware resolution | ✅        | ✅                     |
-| Objective shift        | ✅        | ❌                     |
-| Optimizer scaling      | ❌        | ✅                     |
-| Warmup modeling        | ❌        | ✅                     |
-| Exposure scaling       | ❌        | ✅                     |
-| Rank/Alpha scaling     | ❌        | ✅                     |
-| Safe defaults          | ✅        | ⚠ Depends              |
