@@ -21,7 +21,7 @@ LRTool is a simple tool designed to calculate stable, high-quality learning rate
 
 **Features**:
 
--   ✅ Analytical, energy-based LR modeling
+-   ✅ Analytical, energy-based LR modelling
 -   ✅ Full step scaling (√steps)
 -   ✅ Full rank scaling (√r/α)
 -   ✅ Full resolution scaling (√resolution)
