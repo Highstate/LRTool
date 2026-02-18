@@ -36,7 +36,7 @@ The goal: eliminate LR guesswork and prevent:
 
 
 
-##  🚀 Installation
+##  🚀 Requirements
 
 -  Python 3.9+
 -  Windows executable provided (No python required)
