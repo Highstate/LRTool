@@ -7,7 +7,7 @@ LRTool is a mathematically structured learning rate engine for diffusion-based L
 ---
 
 <p align="center">
-<img width="500" height="780" alt="LRTool" src="https://github.com/Highstate/LRTool/blob/main/assets/LRTool.png"/>
+<img width="300" height="670" alt="LRTool" src="https://github.com/Highstate/LRTool/blob/main/assets/LRTool.png"/>
 </p>
 
 ##  Overview
