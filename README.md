@@ -42,7 +42,7 @@ LRTool provides analytically derived learning rate recommendations for diffusion
 - **Interactive Offset Control**  
   Adjustable learning rate offset slider with real-time stability feedback.
 
-- **Training Efficiency Indicator**  
+- **Convergence Efficiency Indicator**  
   Secondary efficiency score estimating convergence behavior relative to exposure and capacity.
 
 - **Profile Save / Load System**  
