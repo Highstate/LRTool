@@ -77,13 +77,18 @@ LRTool includes calibrated base energy constants, fragility parameters, and arch
 
 LRTool derives the recommended learning rate from an energy-preserving formulation:
 
+<br>
+
 $$
 LR = \frac{TargetEnergy}
 {SchedulerFactor \cdot Exposure \cdot Capacity \cdot ResolutionScale \cdot OptimizerModifier}
 $$
 
+<br>
+
 Rather than treating learning rate as an isolated hyperparameter, the model assumes that stable training occurs when total injected optimization “energy” remains approximately invariant across configurations. The denominator decomposes this energy into measurable components:
 
+<br>
 
 - Exposure - Modeling dataset-normalized update magnitude
 
@@ -91,11 +96,15 @@ $$
 Exposure = \sqrt{\frac{steps \cdot effective\_batch}{images}}
 $$
 
+<br>
+
 - Capacity - Modeling LoRA parameter scaling
 
 $$
 Capacity = \sqrt{\frac{rank}{\alpha}}
 $$
+
+<br>
 
 - ResolutionScale - Where \( p \) is an architecture-dependent hybrid scaling exponent
 
@@ -103,13 +112,19 @@ $$
 ResolutionScale = \left(\frac{resolution}{native\_resolution}\right)^{p}
 $$
 
+<br>
+
 - SchedulerFactor - The scheduler contribution is computed as the RMS-integrated value of the learning rate curve (including warmup):
 
 $$
 SchedulerFactor = \sqrt{\frac{1}{T} \sum_{t=1}^{T} s(t)^2}
 $$
 
+<br>
+
 - OptimizerModifier — A static scaling correction applied to non-self-adjusting optimizers.
+
+<br>
 
 Target energy is derived from calibrated per-architecture base energy constants, optionally modulated by objective type. This formulation ensures that when configuration variables change (batch size, resolution, rank, scheduler, etc.), the learning rate adjusts analytically to preserve training stability rather than relying on empirical presets.
 
@@ -119,29 +134,43 @@ Target energy is derived from calibrated per-architecture base energy constants,
 
 After computing the learning rate, LRTool reconstructs the delivered optimization energy to verify consistency:
 
+<br>
 
 $$
 Energy = LR \cdot SchedulerFactor \cdot Exposure \cdot Capacity \cdot ResolutionScale \cdot OptimizerModifier
 $$
 
+<br>
 
 Deviation from the calibrated target energy is measured as:
+
+<br>
 
 $$
 deviation = \frac{|Energy - TargetEnergy|}{TargetEnergy}
 $$
 
+<br>
+
 When the slider offset is zero, the formulation is algebraically symmetric and deviation evaluates to zero by construction.
+
+<br>
 
 ### Stability Function
 
 Stability is modeled using a curvature-based exponential decay:
 
+<br>
+
 $$
 Stability = 100 \cdot \exp\left(-k \cdot deviation^2\right)
 $$
 
+<br>
+
 This produces a smooth, continuous penalty curve centered at the analytically optimal learning rate.
+
+<br>
 
 ### Asymmetric Curvature
 
@@ -150,17 +179,25 @@ Undershoot and overshoot are treated differently:
 - **Undershoot** uses a fixed universal curvature constant.
 - **Overshoot** scales curvature according to model fragility, objective sensitivity, and gradient noise.
 
+<br>
+
 For overshoot:
 
 $$
 k = model\_fragility \cdot objective\_sensitivity \cdot noise\_factor
 $$
 
+<br>
+
 Where gradient noise is approximated as:
+
+<br>
 
 $$
 noise\_factor = \max\left(0.35,\sqrt{\frac{1}{effective\_batch}}\right)
 $$
+
+<br>
 
 This introduces controlled asymmetry: aggressive overshoot degrades stability more rapidly than conservative undershoot, while larger effective batch sizes dampen curvature growth.
 
