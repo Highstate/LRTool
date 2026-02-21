@@ -520,8 +520,6 @@ left_label.pack(side="left")
 right_label = ttk.Label(range_frame, text="+100%")
 right_label.pack(side="right")
 
-
-
 slider.pack(fill="x", pady=4)
 slider_percent_label = ttk.Label(main, font=("Segoe UI", 9))
 slider_percent_label.pack()
@@ -608,7 +606,7 @@ for var in [steps_var,batch_var,grad_accum_var,images_var,
 #WINDOW POSITION
 
 def center_window(root):
-    root.update_idletasks()  # ensures geometry info is updated
+    root.update_idletasks()
 
     width = root.winfo_width()
     height = root.winfo_height()
@@ -631,6 +629,6 @@ calculate_lr()
 
 root.protocol("WM_DELETE_WINDOW", lambda: (save_window_state(), root.destroy()))
 
-root.update()      # full realization
+root.update()
 root.deiconify()
 root.mainloop()
