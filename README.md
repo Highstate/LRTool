@@ -55,6 +55,7 @@ LRTool provides analytically derived learning rate recommendations for diffusion
 LRTool includes calibrated base energy constants, fragility parameters, and architecture-dependent resolution scaling for the following diffusion models:
 
 - **SD 1.5**
+- **SD 2.1**
 - **SDXL**
 - **SDXL Lightning**
 - **SDXL Turbo**
