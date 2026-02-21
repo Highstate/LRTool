@@ -4,7 +4,7 @@
 LRTool is a mathematically structured learning rate engine for diffusion-based LoRA training. It replaces heuristic tuning with analytically structured, model-aware scaling.
 </p>
 
----
+<br>
 
 <p align="center">
 <img width="300" height="670" alt="LRTool" src="https://github.com/Highstate/LRTool/blob/main/assets/LRTool.png"/>
