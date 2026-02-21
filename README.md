@@ -65,6 +65,13 @@ LRTool includes calibrated base energy constants, fragility parameters, and arch
 
 <br>
 
+##  Requirements
+
+- Executable - Windows 10 or newer (64-bit)
+- Script - Python 3.9+
+
+<br>
+
 ##  Core Learning Rate Model
 
 LRTool derives the recommended learning rate from an energy-preserving formulation:
